@@ -2,7 +2,7 @@
 
 namespace kollex\Mapper;
 
-abstract class Mapper {
+abstract class AbstractMapper {
     protected $productUnits = array(
         'liter' => 'LT',
         'gram' => 'GR'

@@ -2,16 +2,16 @@
 
 namespace kollex\Exporter;
 
-Use \kollex\Converter\Converter;
+Use \kollex\Converter\ConverterInterface;
 
-abstract class Exporter {
+abstract class AbstractExporter {
 
     private $converters = [
         'text/plain' => 'CSVConverter', 
         'application/json' => 'JSONConverter'
     ];
 
-    public function getConverter($file) : ? Converter
+    public function getConverter($file) : ? ConverterInterface
     {
         $filename = $this->getPath() . $this->getSource();
         $mimetype = mime_content_type($filename);

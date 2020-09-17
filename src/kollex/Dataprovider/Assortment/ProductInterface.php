@@ -4,7 +4,7 @@
 namespace kollex\Dataprovider\Assortment;
 
 
-interface Product
+interface ProductInterface
 {
     /**
      * To be implemented

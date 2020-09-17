@@ -4,7 +4,7 @@
 namespace kollex\Dataprovider\Assortment;
 
 
-interface DataProvider
+interface DataProviderInterface
 {
     /**
      * @return Product[]

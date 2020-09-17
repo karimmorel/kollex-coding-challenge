@@ -2,6 +2,6 @@
 
 namespace kollex\Converter;
 
-interface Converter {
+interface ConverterInterface {
     public function convert() : iterable;
 }

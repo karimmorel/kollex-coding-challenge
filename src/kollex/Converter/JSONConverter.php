@@ -2,9 +2,9 @@
 
 namespace kollex\Converter;
 
-Use \kollex\Converter\Converter;
+Use \kollex\Converter\ConverterInterface;
 
-class JSONConverter implements Converter {
+class JSONConverter implements ConverterInterface {
 
     private $filecontent;
 

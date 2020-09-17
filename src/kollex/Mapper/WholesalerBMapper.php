@@ -2,9 +2,9 @@
 
 namespace kollex\Mapper;
 
-Use \kollex\Mapper\Mapper;
+Use \kollex\Mapper\AbstractMapper;
 
-class WholesalerBMapper extends Mapper {
+class WholesalerBMapper extends AbstractMapper {
 
     private $data;
 

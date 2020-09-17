@@ -2,9 +2,9 @@
 
 namespace kollex\Converter;
 
-Use \kollex\Converter\Converter;
+Use \kollex\Converter\ConverterInterface;
 
-class CSVConverter implements Converter {
+class CSVConverter implements ConverterInterface {
 
     private $filecontent;
     private $separator = ";";

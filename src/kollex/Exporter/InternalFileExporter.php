@@ -2,9 +2,9 @@
 
 namespace kollex\Exporter;
 
-Use kollex\Exporter\Exporter;
+Use kollex\Exporter\AbstractExporter;
 
-class InternalFileExporter extends Exporter {
+class InternalFileExporter extends AbstractExporter {
 
     private $source;
     private $path = 'data/';

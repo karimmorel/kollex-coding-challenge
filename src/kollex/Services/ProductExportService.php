@@ -2,15 +2,15 @@
 
 namespace kollex\Services;
 
-Use kollex\Exporter\Exporter;
-Use kollex\Mapper\Mapper;
+Use kollex\Exporter\AbstractExporter;
+Use kollex\Mapper\AbstractMapper;
 
 class ProductExportService {
 
     private $source;
     private $mapper;
 
-    public function __construct(Exporter $source, Mapper $mapper)
+    public function __construct(AbstractExporter $source, AbstractMapper $mapper)
     {
         $this->source = $source;
         $this->mapper = $mapper;

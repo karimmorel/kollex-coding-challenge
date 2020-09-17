@@ -2,13 +2,13 @@
 
 namespace kollex\Mapper;
 
-Use \kollex\Mapper\Mapper;
+Use \kollex\Mapper\AbstractMapper;
 
-class WholesalerAMapper extends Mapper {
+class WholesalerAMapper extends AbstractMapper {
 
     private $data;
 
-    // Using a different mapping than the mapping set in the abstract class for the products using
+    // Using a different mapping than the mapping set in the abstract class for the products units
     protected $productUnits = array(
         'l' => 'LT',
         'g' => 'GR'
