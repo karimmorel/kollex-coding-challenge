@@ -7,9 +7,11 @@
     }
   },
   "require": {
-    "php": ">=7.0"
+    "php": ">=7.0",
+    "symfony/validator": "^5.1"
   },
   "require-dev": {
+    "phpunit/phpunit": "^9.3"
   },
   "suggest": {
   }

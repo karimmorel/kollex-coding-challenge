@@ -1,0 +1,6 @@
+version: "3"
+services:
+  kollex-app:
+    image: kollex-app
+    ports:
+    - 80:80
