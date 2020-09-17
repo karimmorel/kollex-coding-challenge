@@ -9,5 +9,5 @@ interface DataProvider
     /**
      * @return Product[]
      */
-    public function getProducts();
+    public function getProducts() : array;
 }

@@ -21,9 +21,14 @@ class JSONDataProvider implements DataProvider {
     /**
      * @return Product[]
      */
-    public function getProducts()
+    public function getProducts() : array
     {
         $products = $this->products;
-        return json_encode($products);
+        return $products;
+    }
+
+    public function getEncodedProducts()
+    {
+        return json_encode($this->getProducts());
     }
 }

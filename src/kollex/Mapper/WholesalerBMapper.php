@@ -30,11 +30,11 @@ class WholesalerBMapper extends AbstractMapper {
             $product['gtin'] = $wholesalerProduct['EAN_CODE_GTIN'];
             $product['manufacturer'] = $wholesalerProduct['BRAND'];
             $product['name'] = $wholesalerProduct['NAME'];
-            $product['packaging'] = $this->productPackaging[strtolower($wholesalerProduct['PACKAGE'])];
-            $product['baseProductPackaging'] = $this->baseProductPackaging[strtolower($wholesalerProduct['VESSEL'])];
+            $product['packaging'] = self::$productPackaging[strtolower($wholesalerProduct['PACKAGE'])];
+            $product['baseProductPackaging'] = self::$baseProductPackaging[strtolower($wholesalerProduct['VESSEL'])];
             $product['baseProductAmount'] = (float) str_replace(',', '.', $wholesalerProduct['LITERS_PER_BOTTLE']);
             $product['baseProductQuantity'] = (int) $wholesalerProduct['BOTTLE_AMOUNT'];
-            $product['baseProductUnit'] = $this->productUnits['liter'];
+            $product['baseProductUnit'] = self::$productUnits['liter'];
 
             // $product['ADDITIONAL_INFO'] = $wholesalerProduct['ADDITIONAL_INFO'];
 

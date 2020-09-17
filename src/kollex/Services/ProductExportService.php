@@ -5,7 +5,7 @@ namespace kollex\Services;
 use kollex\Exporter\AbstractExporter;
 use kollex\Mapper\AbstractMapper;
 use \kollex\Dataprovider\Assortment\DataProvider;
-use kollex\Dataprovider\Assortment\Product;
+use kollex\Dataprovider\Assortment\BaseProduct;
 
 class ProductExportService {
 
@@ -18,6 +18,24 @@ class ProductExportService {
         $this->source = $source;
         $this->mapper = $mapper;
         $this->provider = $provider;
+    }
+
+    public function setSource(AbstractExporter $source)
+    {
+        $this->source = $source;
+        return $this;
+    }
+
+    public function setMapper(AbstractMapper $mapper)
+    {
+        $this->mapper = $mapper;
+        return $this;
+    }
+
+    public function setProvider(DataProvider $provider)
+    {
+        $this->provider = $provider;
+        return $this;
     }
 
     /**
@@ -37,13 +55,17 @@ class ProductExportService {
 
         foreach ($mappedData as $productData)
         {
-            $product = new Product($productData);
+            $product = new BaseProduct($productData);
 
             $this->provider->addProduct($product);
         }
 
-        return $this->provider->getProducts();
+        return $this;
+    }
 
+    public function display()
+    {
+        return $this->provider->getEncodedProducts();
     }
 
 }

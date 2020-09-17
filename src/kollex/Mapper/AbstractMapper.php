@@ -3,17 +3,17 @@
 namespace kollex\Mapper;
 
 abstract class AbstractMapper {
-    protected $productUnits = array(
+    static public $productUnits = array(
         'liter' => 'LT',
         'gram' => 'GR'
     );
 
-    protected $baseProductPackaging = array(
+    static public $baseProductPackaging = array(
         'bottle' => 'BO',
         'can' => 'CN'
     );
 
-    protected $productPackaging = array(
+    static public $productPackaging = array(
         'bottle' => 'BO',
         'box' => 'BX',
         'case' => 'CA'

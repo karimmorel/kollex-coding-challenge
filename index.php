@@ -6,6 +6,7 @@ require 'vendor/autoload.php';
 
 Use \kollex\Services\ProductExportService;
 Use \kollex\Exporter\InternalFileExporter;
+Use \kollex\Mapper\WholesalerAMapper;
 Use \kollex\Mapper\WholesalerBMapper;
 use \kollex\Dataprovider\Assortment\JSONDataProvider;
 
@@ -14,4 +15,7 @@ $mapper = new WholesalerBMapper;
 $provider = new JSONDataProvider;
 
 $service = new ProductExportService($exporter, $mapper, $provider);
-var_dump($service->export());
+$service->export();
+
+$service->setSource(new InternalFileExporter('wholesaler_a.csv'))->setMapper(new WholesalerAMapper);
+echo $service->export()->display();

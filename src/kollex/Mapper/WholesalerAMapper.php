@@ -9,7 +9,7 @@ class WholesalerAMapper extends AbstractMapper {
     private $data;
 
     // Using a different mapping than the mapping set in the abstract class for the products units
-    protected $productUnits = array(
+    static public $productUnits = array(
         'l' => 'LT',
         'g' => 'GR'
     );
@@ -40,19 +40,19 @@ class WholesalerAMapper extends AbstractMapper {
             $product['gtin'] = $wholesalerProduct[1];
             $product['manufacturer'] = $wholesalerProduct[2];
             $product['name'] = $wholesalerProduct[3];
-            $product['baseProductPackaging'] = $this->baseProductPackaging[strtolower($wholesalerProduct[7])];
+            $product['baseProductPackaging'] = self::$baseProductPackaging[strtolower($wholesalerProduct[7])];
             $product['baseProductAmount'] = (float) substr($wholesalerProduct[8], 0, -1);
-            $product['baseProductUnit'] = $this->productUnits[strtolower($unit)];
+            $product['baseProductUnit'] = self::$productUnits[strtolower($unit)];
 
 
             if($wholesalerProduct[5] == 'single')
             {
-                $product['packaging'] = $this->productPackaging['bottle'];
+                $product['packaging'] = self::$productPackaging['bottle'];
                 $product['baseProductQuantity'] = 1;
             }
             else
             {
-                $product['packaging'] = $this->productPackaging[strtolower($packagingProduct[0])];
+                $product['packaging'] = self::$productPackaging[strtolower($packagingProduct[0])];
                 $product['baseProductQuantity'] = (int) $packagingProduct[1];
             }
 
