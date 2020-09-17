@@ -31,10 +31,10 @@ Here the Mappers, Converters, Exporters and DataProviders are not deeply coupled
 
 ## Frameworks, components and design patterns
 
-For this exercise, I first think that I would use a framework (Symfony or Laravel), but I thought the only component I would need to complete this exercise was a Validation Component in order to validate the properties values of each product. So I decided just to implement the Symfony/ValidationComponent to my project. I thought it would keep the application lighter and more simple.<br/>
-In the same logic, I thought it wasn't necessary to create a big environment for the Docker container, so I just implemented PHP with apache (I even thought providing only PHP but I think it is nice to access the application simply through the localhost link) to my container.<br/>
+For this exercise, I first think that I would use a framework (Symfony or Laravel), but I thought the only component I would need to complete this exercise was a Validation Component in order to validate the properties values of each product. So I decided just to implement the Symfony/ValidationComponent to my project. I thought it would keep the application lighter and more simple.<br/><br/>
+In the same logic, I thought it wasn't necessary to create a big environment for the Docker container, so I just implemented PHP with apache (I even thought providing only PHP but I think it is nice to access the application simply through the localhost link) to my container.<br/><br/>
 I used the Facade design pattern, using a ProductExportService object in order to abstract the complexity of the application for the user of these objects.
-I also inspired myself with the Factory Method design pattern for the interaction between Exporters and Converters, because the converter's initialisation is handled by the Exporter class, it is a little different here because any exporter can initialise any converter, but it helped me for this part of the application.<br/>
+I also inspired myself with the Factory Method design pattern for the interaction between Exporters and Converters, because the converter's initialisation is handled by the Exporter class, it is a little different here because any exporter can initialise any converter, but it helped me for this part of the application.<br/><br/>
 Also I have been using the strategy pattern for the ProductExportService because the behaviour of the export() method is depending on the object's (ProductExportService) compositions, I didn't thought about it while coding, but it came naturally.<br/>
 
 ## Possible extensions
