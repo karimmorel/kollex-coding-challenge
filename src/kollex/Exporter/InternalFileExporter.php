@@ -20,7 +20,7 @@ class InternalFileExporter extends AbstractExporter {
 
         if ($file)
         {
-            $converter = $this->getConverter($file);
+            $converter = $this->getConverter(fopen($file, 'r'));
 
             return $converter->convert();
         }

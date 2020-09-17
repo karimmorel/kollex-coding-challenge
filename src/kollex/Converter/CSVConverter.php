@@ -11,7 +11,10 @@ class CSVConverter implements ConverterInterface {
 
     public function __construct($filecontent)
     {
-        $this->filecontent = $filecontent;
+        if(is_resource($filecontent))
+        {
+            $this->filecontent = $filecontent;
+        }
     }
 
     public function convert(): iterable
@@ -19,7 +22,7 @@ class CSVConverter implements ConverterInterface {
         $convertedData = array();
         $row = 0;
         
-        if (($handle = fopen($this->filecontent, 'r')) !== FALSE) {
+        if (($handle = $this->filecontent) !== FALSE) {
             while (($data = fgetcsv($handle, 1000, $this->separator)) !== FALSE) {
                 $convertedData[$row] = $data;
                 $row++;
