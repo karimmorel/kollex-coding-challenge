@@ -1,13 +1,23 @@
 <?php
 
+/**
+ *  The ProductExportService will handle all the behaviour of the application
+ *  But it needs some other objects to help : 
+ *  An Exporter which his going to fetch the file we need and then which will convert it's content into exploitable data
+ *  A Mapper which will map this data to the different properties of the product object, following the specific representation of the data send by each wholesaler
+ *  And a DataProvider which will return the list of products created into a specific format (here JSON)
+ */ 
+
 namespace kollex\Services;
 
 use kollex\Exporter\AbstractExporter;
 use kollex\Mapper\AbstractMapper;
 use \kollex\Dataprovider\Assortment\DataProvider;
 use kollex\Dataprovider\Assortment\BaseProduct;
+use kollex\Services\ExportServiceInterface;
 
-class ProductExportService {
+
+class ProductExportService implements ExportServiceInterface {
 
     private $source;
     private $mapper;
@@ -38,12 +48,7 @@ class ProductExportService {
         return $this;
     }
 
-    /**
-     * 
-     *  The export method is decoupled in several steps, all handled by different objects
-     *  The exporter will fetch the source we are looking for --> Internal file / External File (Webservice) / A whole folder and return an array with the content of the source
-     *  Then we will map the content to convert the data send by a specific wholesaler into an exploitable data
-     */ 
+    // Exporting the data from the source requested to the DataProvider
     public function export()
     {
         
@@ -63,6 +68,7 @@ class ProductExportService {
         return $this;
     }
 
+    // Returning the list of products the DataProvider has
     public function display()
     {
         return $this->provider->getEncodedProducts();

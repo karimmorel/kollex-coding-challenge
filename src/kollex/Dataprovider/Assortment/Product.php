@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Following the representation described in the swagger.yaml file, I list only getters and setters for the required properties
+ */
 
 namespace kollex\Dataprovider\Assortment;
 

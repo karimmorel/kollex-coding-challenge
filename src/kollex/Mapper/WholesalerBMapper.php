@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Mapper for the Wholesaler A
+ */
+
 namespace kollex\Mapper;
 
 Use \kollex\Mapper\AbstractMapper;

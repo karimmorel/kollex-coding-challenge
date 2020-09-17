@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Returning Products into the JSON format
+ */
+
 namespace kollex\Dataprovider\Assortment;
 
 use \kollex\Dataprovider\Assortment\DataProvider;

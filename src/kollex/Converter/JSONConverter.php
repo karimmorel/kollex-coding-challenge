@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Converting data from JSON files to exploitable array
+ */
+
 namespace kollex\Converter;
 
 use \kollex\Converter\ConverterInterface;

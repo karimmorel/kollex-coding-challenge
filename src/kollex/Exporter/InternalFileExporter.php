@@ -1,8 +1,13 @@
 <?php
 
+/**
+ * This class will handle a unique file, which is within the application (by default in the data/ folder)
+ */
+
 namespace kollex\Exporter;
 
 use kollex\Exporter\AbstractExporter;
+ 
 
 class InternalFileExporter extends AbstractExporter {
 

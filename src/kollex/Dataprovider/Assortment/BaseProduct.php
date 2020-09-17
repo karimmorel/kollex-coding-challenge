@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * Here is my representation of a Product
+ * 
+ * I hesitated between sending my array of data in the constructor of this class
+ * or creating a builder class which would add a specific method to create a Product with my array of data
+ * To keep it simple I thought it was better to do it in the constructor
+ * 
+ * Also I hesitated to use a framework for this project (Symfony or Laravel), but I thought I would only need a Validation object
+ * So I just used the Symfony/Validation object I implemented with composer, I think it make the project lighter and more simple
+ * 
+ */
+
 namespace kollex\Dataprovider\Assortment;
 
 use Symfony\Component\Validator\Constraints as Assert;
@@ -162,7 +174,7 @@ class BaseProduct implements Product {
         return $this;
     }
 
-    // -- -- -- -- 
+    // Validating data (The isValid() method is automatically called by the DataProvider)
 
     public function isValid() {
         $errors = $this->validate();
@@ -178,29 +190,41 @@ class BaseProduct implements Product {
         return $validator->validate($this);
     }
 
+    // Following the Swagger.yaml representation, I hope I forgot nothing :)
+
     public static function getValidationMetadata(ClassMetadata $metadata)
     {
         $metadata->addPropertyConstraint('id', new Assert\NotBlank());
         $metadata->addPropertyConstraint('id', new Assert\Type("string"));
+
+        $metadata->addPropertyConstraint('gtin', new Assert\Type("string"));
+
         $metadata->addPropertyConstraint('manufacturer', new Assert\NotBlank());
         $metadata->addPropertyConstraint('manufacturer', new Assert\Type("string"));
+
         $metadata->addPropertyConstraint('name', new Assert\NotBlank());
         $metadata->addPropertyConstraint('name', new Assert\Type("string"));
+
         $metadata->addPropertyConstraint('packaging', new Assert\NotBlank());
         $metadata->addPropertyConstraint('packaging', new Assert\Type("string"));
         $metadata->addPropertyConstraint('packaging', new Assert\Choice(array_values(AbstractMapper::$productPackaging)));
+
         $metadata->addPropertyConstraint('baseProductPackaging', new Assert\NotBlank());
         $metadata->addPropertyConstraint('baseProductPackaging', new Assert\Type("string"));
         $metadata->addPropertyConstraint('baseProductPackaging', new Assert\Choice(array_values(AbstractMapper::$baseProductPackaging)));
+
         $metadata->addPropertyConstraint('baseProductUnit', new Assert\NotBlank());
         $metadata->addPropertyConstraint('baseProductUnit', new Assert\Type("string"));
         $metadata->addPropertyConstraint('baseProductUnit', new Assert\Choice(array_values(AbstractMapper::$productUnits)));
+
         $metadata->addPropertyConstraint('baseProductAmount', new Assert\NotBlank());
         $metadata->addPropertyConstraint('baseProductAmount', new Assert\Type("float"));
+        
         $metadata->addPropertyConstraint('baseProductQuantity', new Assert\NotBlank());
         $metadata->addPropertyConstraint('baseProductQuantity', new Assert\Type("integer"));
     }
 
+    // I implement the JsonSerializable interface in order to use json_encode directly on a product object
     public function jsonSerialize()
     {
         $data = get_object_vars($this);
