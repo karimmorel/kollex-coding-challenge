@@ -2,7 +2,7 @@
 
 namespace kollex\Exporter;
 
-Use kollex\Exporter\AbstractExporter;
+use kollex\Exporter\AbstractExporter;
 
 class InternalFileExporter extends AbstractExporter {
 

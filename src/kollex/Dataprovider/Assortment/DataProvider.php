@@ -4,10 +4,10 @@
 namespace kollex\Dataprovider\Assortment;
 
 
-interface DataProviderInterface
+interface DataProvider
 {
     /**
      * @return Product[]
      */
-    public function getProducts() : array;
+    public function getProducts();
 }

@@ -32,7 +32,7 @@ class WholesalerBMapper extends AbstractMapper {
             $product['name'] = $wholesalerProduct['NAME'];
             $product['packaging'] = $this->productPackaging[strtolower($wholesalerProduct['PACKAGE'])];
             $product['baseProductPackaging'] = $this->baseProductPackaging[strtolower($wholesalerProduct['VESSEL'])];
-            $product['baseProductAmount'] = (float) $wholesalerProduct['LITERS_PER_BOTTLE'];
+            $product['baseProductAmount'] = (float) str_replace(',', '.', $wholesalerProduct['LITERS_PER_BOTTLE']);
             $product['baseProductQuantity'] = (int) $wholesalerProduct['BOTTLE_AMOUNT'];
             $product['baseProductUnit'] = $this->productUnits['liter'];
 

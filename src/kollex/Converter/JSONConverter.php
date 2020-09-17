@@ -2,7 +2,7 @@
 
 namespace kollex\Converter;
 
-Use \kollex\Converter\ConverterInterface;
+use \kollex\Converter\ConverterInterface;
 
 class JSONConverter implements ConverterInterface {
 
