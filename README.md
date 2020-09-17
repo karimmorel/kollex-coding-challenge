@@ -1,62 +1,57 @@
-# kollex Coding Challenge – Wholesaler Integration
+# kollex Coding Challenge
 
-kollex digitalizes the traditional B2B wholesale by building a digital beverage ecosystem. With our platform gastronomy 
-customers can order everything in a one-stop-shop from their associated wholesalers.
+Hi kollex, I hope you are going well. :)
+I just ended my submission for your coding challenge.
+My goal was to create a software as if I were in a professional situation, and to make the different components loosely coupled.
+I tried do design my software in order to keep the application maintainable and extendable.
 
-It's a decentralized concept, which implies, that kollex integrates with many different wholesalers and gastronomy 
-systems in all kind of ways and formats - from enterprise ERP systems to modern hypermedia APIs to classic CSV files. 
+# Initialisation
 
-One of the essential information that is synced with the kollex platform to allow gastronomy customers ordering products 
-from their associated wholesalers is the wholesaler's product assortment.
+I uploaded this repository on my Github account, you just need to clone it on a local repository to use it.
+>**cd myfavoriterepository**
+>**git clone https://github.com/karimmorel/kollex-coding-challenge.git**
 
+I added a Docker-compose file, so you can launch this application easily :
+>**cd kollex-coding-challenge**
+>**docker-compose up**
 
-## Your Task
-Your task is building a small peace of software, which is able to verify and interpret assortment and product 
-information from different sources in different data formats. The amount of data and the exemplary "Product" schema 
-is very simplified for the purpose of this coding challenge.
+The application should be accessible directly on your localhost: <a href="http://localhost/" target="_blank">localhost</a> (It is using the port 80)
 
-The challenge is to create a modern, maintainable, testable and extendable application, which:
-- follows a pragmatic, but clean approach by 
-  - building a smart software architecture 
-  - e.g. utilizing the right design patterns without over-engineering
-- follows best practices 
-- can easily be extended to integrate additional sources or data formats
-- is fully testable for continuous integration and delivery 
+If you want to access the index.php through your command line by calling the index.php file, you need to run this command : 
+>**docker exec -it {{name-of-your-container}} php /var/www/html/index.php**
 
+You can run tests using the same type of command : 
+>**docker exec -it {{name-of-your-container}} /var/www/html/vendor/bin/phpunit /var/www/html/tests**
 
-## The Data
-In the `/data` folder, you find examples of assortment data in two different formats:
-- wholsesaler_a.csv  
-provides assortment data in CSV format
-- wholsesaler_b.json  
-provides assortment data in a JSON format
+## The project
 
+For this project, I focused on building reusable components, and on using design patterns to add new components easily in the future.
+I added a UML representation of the application in the repository : <a href="https://github.com/karimmorel/kollex-coding-challenge/blob/master/uml_representation.jpg" target="_blank">UML representation</a>. I hope it will help you to understand quickly how it is designed.
+Here the Mappers, Converters, Exporters and DataProviders are not deeply coupled to the ProductExportService component and they can be reused in other situations.
 
-## The Goal
-The goal is an application, which integrates different data formats (see "The Data") and maps those into the target
-schema, which you can find in the `swagger.yaml`. This file does not describe a web API, but only defines 
-the "Product" schema.
+## Frameworks, components and design patterns
 
-Your application should read the given data files (see "The Data") and return a JSON structure with a list of products 
-as defined in the Swagger definition.
+For this exercise, I first think that I would use a framework (Symfony or Laravel), but I thought the only component I would need to complete this exercise was a Validation Component in order to validate the properties values of each product. So I decided just to implement the Symfony/ValidationComponent to my project. I thought it would keep the application lighter and more simple.
+In the same logic, I thought it wasn't necessary to create a big environment for the Docker container, so I just implemented PHP with apache (I even thought providing only PHP but I think it is nice to access the application simply through the localhost link) to my container.
+I used the Facade design pattern, using a ProductExportService object in order to abstract the complexity of the application for the user of these objects.
+I also inspired myself with the Factory Method design pattern for the interaction between Exporters and Converters, because the converter's initialisation is handled by the Exporter class, it is a little different here because any exporter can initialise any converter, but it helped me for this part of the application.
+Also I have been using the strategy pattern for the ProductExportService because the behaviour of the export() method is depending on the object's (ProductExportService) compositions, I didn't thought about it while coding, but it came naturally.
 
-#### The Product Interface
-The project provides the empty Interface `\kollex\Dataprovider\Assortment\Product`. Please implement this (based on the 
-Product schema mentioned above) and/or all additionally required Interfaces or other types of Classes, which you think 
-fit best for the given scenario.
+## Possible extensions
 
-#### Entrypoint
-Your application **does not need** to expose a web API or a CLI interface. A simple PHP file as entrypoint is good 
-enough. The focus of this task is the implementation of the data integration, validation and mapping.  
+As I described it in some documentation of the code, I think the application can be extended in different ways : 
+- Getting the data from other sources (Webservices, ERP systems) by adding new Exporters extending the AbstractExporter class.
+- Handling some other types of files (xml, yaml...) by adding new Converter class implementing the ConverterInterface
+- Adding new customer's representation of a product by adding new Mappers
+- Providing the Data in other format than JSON by adding other DataProviders.
 
+In terms of improvements, I think it will need to specify more the different Mappers, because here they are just mapping products assortment but may be later we could get Users. So I could have placed these Mappers in a Product folder, but here to keep it simple, I did not.
 
-## What We expect
-- clean, well structured code, that follows best practices
-- tests. It's up to you which type of tests you want to write
-- documentation of code, concepts or possible extensions in a way you think it fits best 
+## Thank you :)
 
+Thank you for your interest on my application, and for the time you are giving to this repository. I hope it will interest, I had a great time designing and developing it.
+If you have any question, do not hesitate <a href="https://karimmorel.fr/" target="_blank">to contact me</a>.
 
-## Voluntary Tasks
-- Docker setup: a Dockerfile and a docker-compose file, to run the whole stack via `docker-compose up`
-- descriptions, why you chose a specific structure or pattern, framework or library compared to other options 
-- an description of how you decided what tests to write
+Have a great day :)
+
+Karim.
