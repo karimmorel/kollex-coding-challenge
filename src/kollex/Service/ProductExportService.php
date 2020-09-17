@@ -8,13 +8,13 @@
  *  And a DataProvider which will return the list of products created into a specific format (here JSON)
  */ 
 
-namespace kollex\Services;
+namespace kollex\Service;
 
 use kollex\Exporter\AbstractExporter;
 use kollex\Mapper\AbstractMapper;
 use \kollex\Dataprovider\Assortment\DataProvider;
 use kollex\Dataprovider\Assortment\BaseProduct;
-use kollex\Services\ExportServiceInterface;
+use kollex\Service\ExportServiceInterface;
 
 
 class ProductExportService implements ExportServiceInterface {

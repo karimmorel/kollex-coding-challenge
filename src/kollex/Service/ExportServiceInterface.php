@@ -1,6 +1,6 @@
 <?php
 
-namespace kollex\Services;
+namespace kollex\Service;
 
 use kollex\Exporter\AbstractExporter;
 use kollex\Mapper\AbstractMapper;

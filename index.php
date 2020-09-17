@@ -3,7 +3,7 @@
 require 'vendor/autoload.php';
 
 
-Use \kollex\Services\ProductExportService;
+Use \kollex\Service\ProductExportService;
 Use \kollex\Exporter\InternalFileExporter;
 Use \kollex\Mapper\WholesalerAMapper;
 Use \kollex\Mapper\WholesalerBMapper;
