@@ -37,6 +37,13 @@ I used the Facade design pattern, using a ProductExportService object in order t
 I also inspired myself with the Factory Method design pattern for the interaction between Exporters and Converters, because the converter's initialisation is handled by the Exporter class, it is a little different here because any exporter can initialise any converter, but it helped me for this part of the application.<br/><br/>
 Also I have been using the strategy pattern for the ProductExportService because the behaviour of the export() method is depending on the object's (ProductExportService) compositions, I didn't thought about it while coding, but it came naturally.<br/>
 
+## Tests (PHPUnit)
+
+On this project I decided to work with PHPUnit for testing the different components of the application. It is the testing framework I know the better so I wanted to work with it. <br/>
+Each component is easy to test, because they are loosely coupled between them, allowing us to isolate them.
+I tried first to test the failing cases, so when we are expecting a specific type of data or when we send them empty arguments. Then I test the working cases and I verify that the returned data is the good one.<br/>
+I added some new Exceptions, for this exercise I used pretty explicits names (Product directly in the name of the exceptions) in order to make it easy to understand, but in a real application, I would have used more generic names, which are reusable in other components.
+
 ## Possible extensions
 
 As I described it in some documentation of the code, I think the application can be extended in different ways : 
