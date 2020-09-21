@@ -9,14 +9,14 @@ class BaseProductTest extends TestCase {
     public function testValidationIfProductNotValid()
     {
         $this->expectException(Error::class);
-        $product = new \kollex\DataProvider\Assortment\BaseProduct;
+        $product = new \kollex\Dataprovider\Assortment\BaseProduct;
         $product->isValid();
     }
 
     public function testConstructIfArrayEmpty()
     {
         $this->expectException(ProductNotValidException::class);
-        $product = new \kollex\DataProvider\Assortment\BaseProduct(array('randomvalue'));
+        $product = new \kollex\Dataprovider\Assortment\BaseProduct(array('randomvalue'));
         $product->isValid();
     }
 }

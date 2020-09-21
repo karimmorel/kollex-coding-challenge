@@ -8,7 +8,7 @@ class ProductExportServiceTest extends TestCase {
     {
         $exporter = new \kollex\Exporter\InternalFileExporter('wholesaler_a.csv');
         $mapper = new \kollex\Mapper\WholesalerAMapper;
-        $provider = new \kollex\DataProvider\Assortment\JSONDataProvider;
+        $provider = new kollex\Dataprovider\Assortment\JSONDataProvider;
         $service = new \kollex\Service\ProductExportService($exporter, $mapper, $provider);
 
         $data = $service->display();
@@ -57,7 +57,7 @@ class ProductExportServiceTest extends TestCase {
         $mockedExporter->method('exportSource')->willReturn($returnedArray);
 
         $mapper = new \kollex\Mapper\WholesalerAMapper;
-        $provider = new \kollex\DataProvider\Assortment\JSONDataProvider;
+        $provider = new \kollex\Dataprovider\Assortment\JSONDataProvider;
         $service = new \kollex\Service\ProductExportService($mockedExporter, $mapper, $provider);
 
         $data = $service->export()->display();
