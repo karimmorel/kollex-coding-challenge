@@ -15,6 +15,6 @@ class JSONDataProviderTest extends TestCase {
     {
         $provider = new \kollex\DataProvider\Assortment\JSONDataProvider;
         $data = $provider->getEncodedProducts();
-        $this->assertEquals($data, array());
+        $this->assertEquals($data, '[]');
     }
 }

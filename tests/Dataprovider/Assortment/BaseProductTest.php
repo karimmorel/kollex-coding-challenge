@@ -8,7 +8,7 @@ class BaseProductTest extends TestCase {
 
     public function testValidationIfProductNotValid()
     {
-        $this->expectException(ProductNotValidException::class);
+        $this->expectException(Error::class);
         $product = new \kollex\DataProvider\Assortment\BaseProduct;
         $product->isValid();
     }

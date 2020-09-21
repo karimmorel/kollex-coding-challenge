@@ -13,9 +13,7 @@ class ProductExportServiceTest extends TestCase {
 
         $data = $service->display();
 
-        var_dump($data);
-
-        $this->assertEquals($data);
+        $this->assertEquals($data, '[]');
 
     }
 }

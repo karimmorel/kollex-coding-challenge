@@ -7,7 +7,7 @@ class InternalFileExporterTest extends TestCase {
 
     public function testExportIfNoFileSent()
     {
-          $this->expectException(FileDoesntExistsWhileExportingException::class);
+          $this->expectException(Error::class);
           $exporter = new \kollex\Exporter\InternalFileExporter('');
           $exporter->exportSource();
     }
@@ -21,7 +21,7 @@ class InternalFileExporterTest extends TestCase {
 
     public function testExportIfFileSourceNotAString()
     {
-        $this->expectException(FileDoesntExistsWhileExportingException::class);
+        $this->expectException(Error::class);
         $exporter = new \kollex\Exporter\InternalFileExporter(array('wholesaler_a.csv'));
         $exporter->exportSource();
     }

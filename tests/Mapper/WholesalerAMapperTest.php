@@ -6,7 +6,7 @@ class WholesalerAMapperTest extends TestCase {
 
     public function testIfNoArraySentToMapper()
     {
-        $this->expectException(Exception::class);
+        $this->expectException(Error::class);
         $mapper = new \kollex\Mapper\WholesalerAMapper;
         $mapper->map();
     }

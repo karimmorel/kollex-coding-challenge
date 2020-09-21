@@ -33,7 +33,7 @@ class CSVConverter implements ConverterInterface {
         
         if (($handle = $this->filecontent) !== FALSE) {
 
-            if (!file_exists($handle))
+            if (!is_resource($handle))
             {
                 throw new WrongFileToConverterException;
             }

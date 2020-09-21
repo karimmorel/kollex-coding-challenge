@@ -19,6 +19,7 @@ use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use \kollex\Dataprovider\Assortment\Product;
 use \kollex\Mapper\AbstractMapper;
+use \kollex\Exception\ProductNotValidException;
 
 class BaseProduct implements Product {
 
@@ -178,6 +179,14 @@ class BaseProduct implements Product {
 
     public function isValid() {
         $errors = $this->validate();
+        if(!count($errors) > 0)
+        {
+            return true;
+        }
+        else
+        {
+            throw new ProductNotValidException;
+        }
         return ! count($errors) > 0;
     }
 
