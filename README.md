@@ -8,12 +8,12 @@ I tried do design my software in order to keep the application maintainable and 
 # Initialisation
 
 I uploaded this repository on my Github account, you just need to clone it on a local repository to use it.
->**cd myfavoriterepository**
->**git clone https://github.com/karimmorel/kollex-coding-challenge.git**
+>**cd myfavoriterepository**<br/>
+>**git clone https://github.com/karimmorel/kollex-coding-challenge.git**<br/>
 
 I added a Docker-compose file, so you can launch this application easily :
->**cd kollex-coding-challenge**
->**docker-compose up**
+>**cd kollex-coding-challenge**<br/>
+>**docker-compose up**<br/>
 
 The application should be accessible directly on your localhost: <a href="http://localhost/" target="_blank">localhost</a> (It is using the port 80)<br/>
 

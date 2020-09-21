@@ -1,6 +1,6 @@
 version: "3"
 services:
   kollex-app:
-    image: kollex-app
+    image: karimmorel/kollex-coding-challenge
     ports:
     - 80:80
