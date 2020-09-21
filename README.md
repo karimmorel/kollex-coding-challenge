@@ -39,7 +39,7 @@ Also I have been using the strategy pattern for the ProductExportService because
 
 ## Tests (PHPUnit)
 
-On this project I decided to work with PHPUnit for testing the different components of the application. It is the testing framework I know the better so I wanted to work with it. <br/>
+On this project I decided to work with PHPUnit for testing the different components of the application. It is the testing framework I know the best so I wanted to work with it. <br/>
 Each component is easy to test, because they are loosely coupled between them, allowing us to isolate them.
 I tried first to test the failing cases, so when we are expecting a specific type of data or when we send them empty arguments. Then I test the working cases and I verify that the returned data is the good one.<br/>
 I added some new Exceptions, for this exercise I used pretty explicits names (Product directly in the name of the exceptions) in order to make it easy to understand, but in a real application, I would have used more generic names, which are reusable in other components.
