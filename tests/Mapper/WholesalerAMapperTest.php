@@ -1,9 +1,12 @@
 <?php
 
-class WholesalerAMapperTest extends PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
 
-    public function ifNoArraySentToMapper()
+class WholesalerAMapperTest extends TestCase {
+
+    public function testIfNoArraySentToMapper()
     {
+        $this->expectException(Exception::class);
         $mapper = new \kollex\Mapper\WholesalerAMapper;
         $mapper->map();
     }

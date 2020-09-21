@@ -7,6 +7,7 @@
 namespace kollex\Converter;
 
 use \kollex\Converter\ConverterInterface;
+use \kollex\Exception\WrongFileToConverterException;
 
 class JSONConverter implements ConverterInterface {
 
@@ -17,6 +18,10 @@ class JSONConverter implements ConverterInterface {
         if(is_resource($filecontent))
         {
             $this->filecontent = $filecontent;
+        }
+        else
+        {
+            throw new WrongFileToConverterException;
         }
     }
 

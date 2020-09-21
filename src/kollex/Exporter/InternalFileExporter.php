@@ -7,6 +7,7 @@
 namespace kollex\Exporter;
 
 use kollex\Exporter\AbstractExporter;
+use kollex\Exception\FileDoesntExistsWhileExportingException;
  
 
 class InternalFileExporter extends AbstractExporter {
@@ -37,7 +38,14 @@ class InternalFileExporter extends AbstractExporter {
     {
         $filename = $this->path . $this->source;
 
-        return file_exists($filename) ? $filename : false;
+        if(file_exists($filename))
+        {
+            return $filename;
+        }
+        else
+        {
+            throw new FileDoesntExistsWhileExportingException;
+        }
     }
 
     public function getSource()

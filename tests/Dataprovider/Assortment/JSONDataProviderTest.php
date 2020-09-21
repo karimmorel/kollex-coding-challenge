@@ -1,16 +1,20 @@
 <?php
 
-class JSONDataProviderTest extends PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
+
+class JSONDataProviderTest extends TestCase {
 
     public function testGetProductsIfNoProducts()
     {
         $provider = new \kollex\DataProvider\Assortment\JSONDataProvider;
-        $provider->getProducts();
+        $data = $provider->getProducts();
+        $this->assertEquals($data, array());
     }
 
     public function testGetEncodedProductsIfNoProducts()
     {
         $provider = new \kollex\DataProvider\Assortment\JSONDataProvider;
-        $provider->getEncodedProducts();
+        $data = $provider->getEncodedProducts();
+        $this->assertEquals($data, array());
     }
 }

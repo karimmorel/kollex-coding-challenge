@@ -33,6 +33,11 @@ class WholesalerAMapper extends AbstractMapper {
     {
         unset($this->data[0]);
 
+        if(empty($this->data))
+        {
+            throw new Exception('No array sent to the mapper.');
+        }
+
         foreach ($this->data as $wholesalerProduct)
         {
             // Exploding the "packaging product" case

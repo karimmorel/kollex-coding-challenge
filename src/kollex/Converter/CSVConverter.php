@@ -7,6 +7,7 @@
 namespace kollex\Converter;
 
 use \kollex\Converter\ConverterInterface;
+use \kollex\Exception\WrongFileToConverterException;
 
 class CSVConverter implements ConverterInterface {
 
@@ -19,6 +20,10 @@ class CSVConverter implements ConverterInterface {
         {
             $this->filecontent = $filecontent;
         }
+        else
+        {
+            throw new WrongFileToConverterException;
+        }
     }
 
     public function convert(): iterable
@@ -27,6 +32,12 @@ class CSVConverter implements ConverterInterface {
         $row = 0;
         
         if (($handle = $this->filecontent) !== FALSE) {
+
+            if (!file_exists($handle))
+            {
+                throw new WrongFileToConverterException;
+            }
+
             while (($data = fgetcsv($handle, 1000, $this->separator)) !== FALSE) {
                 $convertedData[$row] = $data;
                 $row++;

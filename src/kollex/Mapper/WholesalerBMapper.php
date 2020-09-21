@@ -26,6 +26,11 @@ class WholesalerBMapper extends AbstractMapper {
     public function map() : iterable
     {
         $mappedData = array();
+
+        if(empty($this->data))
+        {
+            throw new Exception('No array sent to the mapper.');
+        }
     
         foreach ($this->data['data'] as $wholesalerProduct)
         {
